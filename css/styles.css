@@ -198,7 +198,7 @@ width: 200px;
 height: 50px;
 padding: 0;
 border-radius: 4px;
-border: var(--selection-color);
+border: 1px;
 
     color: #FFF;
     text-align: center;
@@ -213,47 +213,45 @@ border: var(--selection-color);
 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
-.backdrop{
+.backdrop {
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    visibility: visible;
 
-    background: rgba(0, 0, 0, 0.20);
-    
+    background: rgba(0, 0, 0, 0.2);
     opacity: 1;
-    transition: opacity 250ms var(--timing-function);
-    transition: visibility 250 ms var(--timing-function);
+    visibility: visible;
+    transition: opacity 250ms var(--timing-function),
+        visibility 250ms var(--timing-function);
 }
-.backdrop.is-hidden{
-opacity: 0;
-pointer-events: none;
-visibility: hidden;
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
-.backdrop.is-hidden .modal{
+.backdrop.is-hidden .modal {
     transform: translate(-50%, -50%) scale(0.9);
 }
-.modal{
-    width: 528px;
-    height: 581px;
-
+.modal {
     position: absolute;
     z-index: 1;
+    width: 528px;
+    height: 581px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
 
     border-radius: 4px;
-    background: #FFF;
-    
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.20), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
     transition: transform 250ms var(--timing-function);
 }
-.close{
+.close {
     position: absolute;
     top: 8px;
     right: 8px;
@@ -287,9 +285,27 @@ visibility: hidden;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    
+    position: relative;
+}
+.form-field input:hover,
+.form-field input:focus{
+    border-color: var(--selection-color);
+}
+.form-field input:hover + .form-icon,
+.form-field input:focus + .form-icon{
+fill: var(--selection-color);
+}
+.form-field.comm{
+    margin-bottom: 20px;
+}
+.form-field.comm textarea:hover,
+.form-field.comm textarea:focus {
+    border-color: var(--selection-color);
 }
 .form-field label{
     margin-right: auto;
+    margin-bottom: 4px;
 
     color: var(--text-color);
         
@@ -300,13 +316,24 @@ visibility: hidden;
         letter-spacing: 0.12px;
 }
 .form-field input{
+    padding-left: 42px;
     width: 100%;
     height: 40px;
+
+    border-radius: 4px;
+    border: 1px solid rgba(33, 33, 33, 0.20);
+
+    outline: none;
 }
 .form-field textarea{
     padding: 12px 16px;
     width: 100%;
     height: 120px;
+
+    border-radius: 4px;
+    border: 1px solid rgba(33, 33, 33, 0.20);
+
+    outline: none;
 }
 .form-field textarea::placeholder{
        color: rgba(117, 117, 117, 0.50);
@@ -317,24 +344,76 @@ visibility: hidden;
         line-height: 1.2;
         letter-spacing: 0.12px;
 }
+.form-icon{
+    position: absolute;
+    bottom: 11px;
+    left: 12px;
+}
+.checkbox{
+    margin-bottom: 30px;
+    position: relative;
+    margin-left: 8px;
+}
+.check {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    margin-left: -24px;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-image: url(../images/nocheck.svg);
+    background-size: contain;
+    transition: background-image 250ms var(--timing-function);
+}
+
+.checkbox input:checked+.check {
+    background-image: url(../images/check.svg);
+}
+
 .checkbox label{
     color: var(--text-color);
         
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.71
+        line-height: 1.71;
         letter-spacing: 0.42px;
 }
 .checkbox a{
     color: var(--selection-color);
         
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 1.71;
-        letter-spacing: 0.42px;
-        text-decoration-line: underline;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: 0.42px;
+    text-decoration-line: underline;
+}
+.subbutt{
+    width: 200px;
+    height: 50px;
+    
+    border: 1px;
+    border-radius: 4px;
+    background-color: var(--selection-color);
+    
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+    color: #FFF;
+    
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.875;
+    letter-spacing: 0.96px;
+    cursor: pointer;
+
+    transition: background-color 250ms var(--timing-function);
+}
+.subbutt:hover,
+.subbutt:focus{
+    background-color: #188CE8;
 }
 .advantages{
     padding-top: 94px;
@@ -358,9 +437,7 @@ visibility: hidden;
     border-radius: 4px;
     background-color: var(--bc);
 }
-.advantages-items .item-icon {
-    
-}
+
 .advantages-head { 
     margin-bottom: 10px; 
         font-family: Roboto;
@@ -779,4 +856,80 @@ color: #FFF;
 }
 .footer-add-item svg {
     fill: #fff;
+}
+.subscribe{
+    margin-left: 93px;
+}
+.subscribe p{
+    margin-bottom: 20px;
+
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+}
+.subbox{
+    display: flex;
+}
+.subscribe input{
+    margin-right: 12px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 16px;
+    width: 358px;
+    height: 50px;
+
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: rgba(33, 150, 243, 0.00);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.48px;
+
+    outline: none;
+}
+.subscribe input::placeholder{
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.48px;
+}
+.subscribe-button{
+    width: 200px;
+    height: 50px;
+    padding: 10px 62px 10px 28px;
+
+    position: relative;
+
+    border: 1px;
+    border-radius: 4px;
+    background: var(--selection-color);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+    color: #FFF;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.875;
+    letter-spacing: 0.96px;
+    cursor: pointer;
+}
+.sub-icon{
+    position: absolute;
+    right: 28px;
+    bottom: 13px;
+
+    fill: #FFF;
 }

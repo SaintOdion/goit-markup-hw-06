@@ -307,7 +307,6 @@
     </main>
     <footer>
       <div class="foot container">
-        <h2 class="visually-hidden">foot</h2>
         <div class="f-con">
           <a class="footer-logo" lang="en" href="#"><span>Web</span>Studio</a>
           <address class="footer-address">
@@ -335,7 +334,7 @@
           </address>
         </div>
         <div class="footer-add">
-          <h3 class="footer-add-text">приєднуйтесь</h3>
+          <p class="footer-add-text">приєднуйтесь</p>
           <ul class="footer-add-item">
             <li class="add-item">
               <a href="#">
@@ -367,7 +366,22 @@
             </li>
           </ul>
         </div>
+        <form class="subscribe">
+          <p>підпишіться на розсилку</p>
+          <div class="subbox">
+            <label
+              ><input type="email" name="mail" placeholder="E-mail"
+            /></label>
+            <button class="subscribe-button" type="button">
+              Підписатися
+              <svg class="sub-icon" width="24" height="24">
+                <use href="./images/icons.svg#send"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
       </div>
     </footer>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
