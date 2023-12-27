@@ -265,6 +265,14 @@ border: 1px;
     background-color: transparent;
     cursor: pointer;
 }
+.close svg{
+    fill: #000;
+    transition: fill 250ms var(--timing-function);
+}
+.close:hover svg,
+.close:focus svg{
+    fill: var(--selection-color);
+}
 .form{
     padding: 40px;
 }
@@ -354,7 +362,30 @@ fill: var(--selection-color);
     position: relative;
     margin-left: 8px;
 }
-.check {
+.check{
+    position: absolute;
+    margin-left: -24px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.check.on{
+    opacity: 0;
+}
+.check.off {
+    opacity: 1;
+}
+.checkbox input:hover ~.check.off,
+.checkbox input:focus ~.check.off{
+    fill: var(--selection-color);
+}
+.checkbox input:checked + .check.on{
+    opacity: 1;
+}
+
+.checkbox input:checked ~ .check.off{
+    opacity: 0;
+}
+/*.check {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -369,7 +400,7 @@ fill: var(--selection-color);
 .checkbox input:checked+.check {
     background-image: url(../images/check.svg);
 }
-
+*/
 .checkbox label{
     color: var(--text-color);
         
